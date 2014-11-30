@@ -9,7 +9,7 @@
     </head>
     <body>
 
-        <main class="container">
+        <main class="container" ng-app="TalkingBack" ng-controller="commentsController">
             <section>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
@@ -17,26 +17,46 @@
             </section>
 
             <section>
-                <h2>Add a Comment</h2>
-                <!--  
-                put a form here for entering a new comment
-                the user must select a rating, and enter a name, title, and comment body
-                before the comment can be saved to the server
-                for the rating selection, use the Angular Bootstrap Rating directive 
-                http://angular-ui.github.io/bootstrap/#/rating
-                their script file is included below
-                -->
+                <h2><br>Add a Comment</br></h2>
+                <form ng-submit="addComments(newComment)">
+                    <div class="form-group">
+                        <label for="comment-name"></label>
+                        <input type="text" id="comment-name" class="form-control" placeholder="Name" ng-model="newComment.name"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-title"></label>
+                        <input type="text" id="comment-title" class="form-control" placeholder="Title" ng-model="newComment.title"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-input"></label>
+                        <input type="text" id="comment-input" class="form-control" placeholder="Comment" ng-model="newComment.comment"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-rating"></label>
+                        <rating class="form-control" id="rating" ng-model="rate" ng-model="newComment.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" ng-disabled="loading">Add Comment</button>
+                    </div>
+                </form>
             </section>
 
             <section>
-                <h2>Comments</h2>
-                <!-- 
-                display existing comments here
-                each comment should also have UI allowing the user to vote up/down the comment
-                as well as delete it
-                 -->
+                <h2>Comments<img src="img/ajax-spinner.gif" alt="loading animation" ng-if="loading"/></h2>
+                <button class="btn btn-primary" ng-click="refreshComments()">Refresh</button>
+                <table id="previousComments">
+                    <section ng-repeat="comment in comments">
+                        <p id="name"><b>{{comment.name}}</b></p>
+                        <p id="title"><b>{{comment.title}}</b></p>
+                        <p id="comment">{{comment.comment}}</p>
+                        <p id="rating">{{comment.rating}}</p>
+                        <p id="score">{{comment.score}}</p>
+                        <button type="button" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted">Upvote</button>
+                        <button type="button" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted">Downvote</button>
+                        <button type="button" class"btn btn-primary" id="refresh" ng-click="updateComments(comment)">Delete</button>
+                    </section>
+                </table>
             </section>
-
         </main>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>

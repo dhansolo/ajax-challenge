@@ -3,6 +3,12 @@
 body {
     font-family: 'Ubuntu', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
+    background-color: #582A72;
+    color: #AB8A39;
+}
+
+h2 {
+	text-decoration: underline;
 }
 
 .product-picture {
@@ -10,4 +16,41 @@ body {
     height: 130px;
     margin-right: 10px;
 }
+
+#spinner {
+	display: none;
+}
+.form-group {
+	margin-bottom: 1px;
+	margin-top: 1px;
+}
+
+#name {
+	font-size: 20px;
+}
+
+#title {
+	font-size: 15px;
+}
+
+#comment {
+	font-size: 15px;
+}
+
+#rating {
+	width: 100px;
+	margin-bottom: 5px;
+}
+
+#refresh {
+	top: 400px;
+}
+
+#previousComments {
+	margin-bottom: 5px;
+}
+
+
+
+
 
