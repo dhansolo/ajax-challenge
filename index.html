@@ -16,8 +16,8 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia cumque deserunt ullam repudiandae nisi corporis! Ipsum, ducimus commodi, itaque porro distinctio consequuntur! Autem doloremque numquam nemo ex nulla tempora quis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde nihil doloribus excepturi quisquam error possimus veritatis facere, commodi cumque ab atque dolore ducimus obcaecati ipsa, impedit! Consequuntur, eligendi iure cumque!</p>
             </section>
 
-            <section>
-                <h2><br>Add a Comment</br></h2>
+            <section id="addComment">
+                <h2>Add a Comment</h2>
                 <form ng-submit="addComments(newComment)">
                     <div class="form-group">
                         <label for="comment-name"></label>
@@ -33,27 +33,30 @@
                     </div>
                     <div class="form-group">
                         <label for="comment-rating"></label>
-                        <rating class="form-control" id="rating" ng-model="rate" ng-model="newComment.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                        <p><b>Rate!</b></p>
+                        <rating id="rating" ng-model="newComment.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary" ng-disabled="loading">Add Comment</button>
+                        <img src="img/ajax-spinner.gif" id="addSpinner" alt="loading animation" ng-if="loading"/>
+                        <button type="submit" class="btn btn-primary" ng-click="addComments" ng-disabled="loading">Add Comment</button>
                     </div>
                 </form>
             </section>
 
-            <section>
-                <h2>Comments<img src="img/ajax-spinner.gif" alt="loading animation" ng-if="loading"/></h2>
-                <button class="btn btn-primary" ng-click="refreshComments()">Refresh</button>
+            <section id="comments">
+                <h2>Comments</h2>
+                <img src="img/ajax-spinner.gif" id="commentSpinner" alt="loading animation" ng-if="loading"/>
+                <button class="btn btn-primary" id="refresh" ng-click="refreshComments()">Refresh</button>
                 <table id="previousComments">
                     <section ng-repeat="comment in comments">
                         <p id="name"><b>{{comment.name}}</b></p>
                         <p id="title"><b>{{comment.title}}</b></p>
                         <p id="comment">{{comment.comment}}</p>
-                        <p id="rating">{{comment.rating}}</p>
-                        <p id="score">{{comment.score}}</p>
+                        <p id="rating">Rating: {{comment.rating}}</p>
+                        <p id="score">Score: {{comment.score}}</p>
                         <button type="button" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted">Upvote</button>
                         <button type="button" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted">Downvote</button>
-                        <button type="button" class"btn btn-primary" id="refresh" ng-click="updateComments(comment)">Delete</button>
+                        <button type="button" class"btn btn-primary" id="delete" ng-click="updateComments(comment)">Delete</button>
                     </section>
                 </table>
             </section>

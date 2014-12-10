@@ -7,8 +7,16 @@ body {
     color: #AB8A39;
 }
 
+#addComment h2 {
+	margin-top: 50px;
+}
+
 h2 {
 	text-decoration: underline;
+}
+
+#addComment button {
+	margin-top: 15px;
 }
 
 .product-picture {
@@ -17,9 +25,18 @@ h2 {
     margin-right: 10px;
 }
 
-#spinner {
-	display: none;
+#commentSpinner {
+	position: relative;
+	left: 270px;
+	bottom: 40px;
 }
+
+#addSpinner {
+	position: relative;
+	left: 170px;
+	bottom: 0px;
+}
+
 .form-group {
 	margin-bottom: 1px;
 	margin-top: 1px;
@@ -38,17 +55,26 @@ h2 {
 }
 
 #rating {
-	width: 100px;
+	width: 500px;
+	margin-top: 0px;
 	margin-bottom: 5px;
+	font-size: 30px;
+}
+
+#score {
+	font-size: 25px;
 }
 
 #refresh {
-	top: 400px;
+	position: relative;
+	left: 160px;
+	bottom: 40px;
 }
 
-#previousComments {
-	margin-bottom: 5px;
+#upvote, #downvote, #delete {
+	margin-bottom: 50px;
 }
+
 
 
 

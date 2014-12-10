@@ -1,8 +1,4 @@
 "use strict";
-/*
-    app.js, main Angular application script
-    define your module and controllers here
-*/
 var url = 'https://api.parse.com/1/classes/comments/';
 
 angular.module('TalkingBack', ['ui.bootstrap'])
@@ -23,7 +19,7 @@ angular.module('TalkingBack', ['ui.bootstrap'])
 
 		$scope.refreshComments = function() {
 			$scope.loading = true;
-			$http.get(url) 
+			$http.get(url + "?order=-score") 
 				.success(function(responseData) {
 					$scope.comments = responseData.results;
 				})
@@ -35,14 +31,14 @@ angular.module('TalkingBack', ['ui.bootstrap'])
 				});
 		};
 		$scope.refreshComments();
-		//$scope.newComment = {score : 0};
+		$scope.newComment = {score : 0};
 
 		$scope.addComments = function(comment) {
 			$http.post(url, comment)
 				.success(function(responseData) {
 					comment.objectId = responseData.objectId;
 					$scope.comments.push(comment);
-					//$scope.newComment = {score : 0};
+					$scope.newComment = {score : 0};
 				});
 		};
 
@@ -58,7 +54,6 @@ angular.module('TalkingBack', ['ui.bootstrap'])
 		};
 
 		$scope.updateScore = function(comment, vote) {
-			$scope.voted = true;
 			comment.score = comment.score + vote;
 			$http.put(url + comment.objectId, comment)
 				.success(function(responseData) {
