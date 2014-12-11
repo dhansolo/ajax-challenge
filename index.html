@@ -55,9 +55,9 @@
                         <p id="comment">{{comment.comment}}</p>
                         <p id="rating">Rating: {{comment.rating}}</p>
                         <p id="score">Score: {{comment.score}}</p>
-                        <img src="http://img1.wikia.nocookie.net/__cb20120927013713/fanfictionstories/images/2/24/Upvote.png" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted"/>
-                        <img src="http://img3.wikia.nocookie.net/__cb20130223221942/dragonvale/images/archive/e/eb/20130223222029!Downvote.png" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted"/>
-                        <img src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/256x256/DeleteRed.png" class"btn btn-primary" id="delete" ng-click="updateComments(comment)"/>
+                        <img src="img/Upvote.png" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted"/>
+                        <img src="img/downvote.png" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted"/>
+                        <img src="img/delete.png" class"btn btn-primary" id="delete" ng-click="updateComments(comment)"/>
                         <p id="border"></p>
                     </section>
                 </table>
