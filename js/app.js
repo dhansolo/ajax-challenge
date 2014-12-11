@@ -34,12 +34,14 @@ angular.module('TalkingBack', ['ui.bootstrap'])
 		$scope.newComment = {score : 0};
 
 		$scope.addComments = function(comment) {
-			$http.post(url, comment)
-				.success(function(responseData) {
-					comment.objectId = responseData.objectId;
-					$scope.comments.push(comment);
-					$scope.newComment = {score : 0};
-				});
+			if(comment.name !== undefined || comment.title !== undefined || comment.comment !== undefined) {
+				$http.post(url, comment)
+					.success(function(responseData) {
+						comment.objectId = responseData.objectId;
+						$scope.comments.push(comment);
+						$scope.newComment = {score : 0};
+					});
+			}
 		};
 
 		$scope.updateComments = function(comment) {
@@ -55,6 +57,9 @@ angular.module('TalkingBack', ['ui.bootstrap'])
 
 		$scope.updateScore = function(comment, vote) {
 			comment.score = comment.score + vote;
+			if(comment.score < 0) {
+				comment.score = 0;
+			}
 			$http.put(url + comment.objectId, comment)
 				.success(function(responseData) {
 				})

@@ -45,7 +45,8 @@
 
             <section id="comments">
                 <h2>Comments</h2>
-                <img src="img/ajax-spinner.gif" id="commentSpinner" alt="loading animation" ng-if="loading"/>
+                <p id="border"></p>
+                <img src="img/ajax-spinner-sm.gif" id="commentSpinner" alt="loading animation" ng-if="loading"/>
                 <button class="btn btn-primary" id="refresh" ng-click="refreshComments()">Refresh</button>
                 <table id="previousComments">
                     <section ng-repeat="comment in comments">
@@ -54,9 +55,10 @@
                         <p id="comment">{{comment.comment}}</p>
                         <p id="rating">Rating: {{comment.rating}}</p>
                         <p id="score">Score: {{comment.score}}</p>
-                        <button type="button" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted">Upvote</button>
-                        <button type="button" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted">Downvote</button>
-                        <button type="button" class"btn btn-primary" id="delete" ng-click="updateComments(comment)">Delete</button>
+                        <img src="http://img1.wikia.nocookie.net/__cb20120927013713/fanfictionstories/images/2/24/Upvote.png" class"btn btn-primary" id="upvote" ng-click="updateScore(comment, 1)" ng-disabled="voted"/>
+                        <img src="http://img3.wikia.nocookie.net/__cb20130223221942/dragonvale/images/archive/e/eb/20130223222029!Downvote.png" class"btn btn-primary" id="downvote" ng-click="updateScore(comment, -1)" ng-disabled="voted"/>
+                        <img src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/256x256/DeleteRed.png" class"btn btn-primary" id="delete" ng-click="updateComments(comment)"/>
+                        <p id="border"></p>
                     </section>
                 </table>
             </section>

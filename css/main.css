@@ -68,11 +68,16 @@ h2 {
 #refresh {
 	position: relative;
 	left: 160px;
-	bottom: 40px;
+	bottom: 55px;
 }
 
 #upvote, #downvote, #delete {
 	margin-bottom: 50px;
+	width: 30px;
+}
+
+#border {
+	border-bottom: 5px #AB8A39 double;
 }
 
 
